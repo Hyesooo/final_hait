@@ -1,0 +1,2 @@
+module HaitHelper
+end
