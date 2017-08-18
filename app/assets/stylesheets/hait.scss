@@ -88,31 +88,32 @@ button:focus {
 
 
 /* Cover */
-.carousel-item {
-  height: 100vh;
-  padding-top: 45px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
+.cover_img {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   text-align: center;
-  color: #fff;
+  height: auto;
+  width :100%;
 }
 
-.carousel-item:nth-child(1) {
-  background-image: linear-gradient(to bottom, rgba(0,0,0,.2) 0%, rgba(0,0,0,.2) 100%), url(../assets/bg-cover-1.jpg);
-}
-.carousel-item:nth-child(2) {
-  background-image: linear-gradient(to bottom, rgba(0,0,0,.2) 0%, rgba(0,0,0,.2) 100%), url(../assets/bg-cover-2.jpg);
-}
-.carousel-item:nth-child(3) {
-  background-image: linear-gradient(to bottom, rgba(0,0,0,.2) 0%, rgba(0,0,0,.2) 100%), url(../assets/bg-cover-3.jpg);
-}
+// .cover-item {
+//   height: 100vh;
+//   padding-top: 45px;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   background-size: cover;
+//   background-position: center center;
+//   background-repeat: no-repeat;
+//   text-align: center;
+//   height: 100vh;
+//   padding-top: 45px;
+//   color: #fff;
+// }
 
-
-.carousel__title {
+.cover__title {
   font-size: 9.3333333rem;
   font-weight: 700;
   line-height: 1;
@@ -120,18 +121,18 @@ button:focus {
 }
 
 @media screen and (max-width: 576px) {
-  .carousel__title {
+  .cover__title {
     font-size: 5.33333rem;
   }
 }
 
 @media screen and (min-width: 577px) and (max-width: 992px) {
-  .carousel__title {
+  .cover__title {
     font-size: 7.33333333rem;
   }
 }
 
-.carousel__text {
+.cover__text {
   font-weight: 700;
   color: #fff;
 }
@@ -139,6 +140,43 @@ button:focus {
 .btn {
   border-radius: 100px;
   color: #fff;
+}
+
+.btn-primary {
+  border: none;
+  font-size: 0.8rem;
+  line-height: 1;
+  background-color: #ff5069;
+}
+.btn-room_search{
+  border-radius: 1px;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 700;
+  letter-spacing: 0.14em
+  
+}
+.btn-primary:hover {
+  background-color: #ff5069;
+}
+.a_btn_primary {
+  background-color: #fff;
+  color: #ff5069;
+  border: solid 1px #ff5069;
+  font-size: 1.0rem;
+  font-weight: 700;
+  line-height: 2;
+}
+.a_btn_primary:hover,
+.a_btn_primary:focus {
+  color: #fff;
+  background-color: #ff5069;
+}
+
+.btn.focus, .btn:focus {
+  box-shadow: none;
+  background-color: #ff5069;
+  color: white;
 }
 
 
@@ -173,6 +211,7 @@ button:focus {
 .section__about {
   padding: 120px 0;
   text-align: center;
+  background-color: white;
 }
 
 .about__datum {
@@ -203,11 +242,6 @@ button:focus {
   letter-spacing: -0.02em;
 }
 
-.btn.btn-primary {
-  border: none;
-  font-size: 0.8rem;
-  line-height: 1;
-}
 
 .card-img__container {
   display: block;
@@ -321,8 +355,6 @@ button:focus {
 /*//room_like*/ 
 
 /*profile*/
-
-
 .section__profile{
   text-align: left;
   padding: 80px 0;
@@ -339,15 +371,136 @@ button:focus {
   transition: all 0.2s ease-in-out;
 }
 
+.profile_button {
+  line-height : 1.2;
+}
+
 /*//profile*/ 
 
 body {
   background-color: #f7f7f7;
 }
 
-/**/
+/*room_detail*/
 .section__detail {
   padding: 80px 0;
-  
+}
+@media screen and (max-width: 576px) {
+  .section__detail {
+  padding: 80px 15px;
+  }
+}
+.detail_tr {
+  border-top: 1px solid #D8D8D8;
+  border-bottom: 1px solid #D8D8D8;
+}
+.detail_td {
+  font-size: 0.8rem;
+  font-weight: 300;
+  line-height: 3;
+}
+.detail_td_right {
+  font-size: 0.8rem;
+  text-align: right;
+  font-weight: 700;
+  line-height: 3;
+}
+.section__detail img {
+  width: 100%;
+  height: 350px;
+  border-radius: 10px;
+}
+.detail_table {
+  width: 100%;
+}
+
+.container .ticket_buy_button{
+  line-height: 2;
+}
+.ticket_buy_button:hover,
+.ticket_buy_button:focus{
+  outline: none;
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
 }
 /*//room_Detail*/
+
+
+// counter를 위한 css
+.count-title { font-size: 100px; color: #ff5069; font-weight: normal; margin-bottom: 0; text-align: center; }
+
+// ticket_history
+h1.big { font-size: 100px; }
+.th .ye {
+  flex-wrap: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+// room_register_radio button
+.btn.ye {
+  color: white;
+  background-color: #ff5069;
+}
+
+// room_search
+.filter_ye {
+  background-color: white;
+}
+.option-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: relative;
+  top: 13.33333px;
+  width: 40px;
+  height: 40px;
+  -webkit-transition: all 0.15s ease-out 0;
+  -moz-transition: all 0.15s ease-out 0;
+  transition: all 0.15s ease-out 0;
+  background: #cbd1d8;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  outline: none;
+  position: relative;
+  margin-right: 0.5rem;
+  z-index: 1000;
+}
+.option-input:hover { background: #9faab7; }
+.option-input:checked { background: #ff5069; }
+.option-input:checked::before {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  content: '\2716';
+  display: inline-block;
+  font-size: 26.66667px;
+  text-align: center;
+  line-height: 40px;
+}
+.option-input:checked::after {
+  -webkit-animation: click-wave 0.65s;
+  -moz-animation: click-wave 0.65s;
+  animation: click-wave 0.65s;
+  background: #40e0d0;
+  content: '';
+  display: block;
+  position: relative;
+  z-index: 100;
+}
+.option-input.radio { border-radius: 50%; }
+.option-input.radio::after { border-radius: 50%; }
+
+#price-range .ui-state-default {
+  border: 1px solid #ff5069;
+  background-color: #ff5069;
+  outline: none;
+}
+#price-range .ui-widget-header {
+  background: #FFC0C9;
+}

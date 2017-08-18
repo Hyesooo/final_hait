@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head>
+  <html lang="ko">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  
+  <!--checkbox & radio를 위한 css  -->
+  <link href="css/magic-check.css" rel="stylesheet">
+</head>
+
+<body>
+  
+  <form action="/hait/user_type_update" method="post">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <p>서비스를 이용하기 위해서 사용자 유형을 선택해주세요.</p>
+        <div class="row justify-content-center">  
+          <div class="col-lg-6 col-md-6 col-sm-10 col-xs-10">
+            <input class="option-input radio" type="radio" name="user_type" value=0 checked> 하숙생
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-10 col-xs-10">
+            <input class="option-input radio" type="radio" name="user_type" value=1 > 하숙주인
+          </div>
+          <!--<input type='hidden' >-->
+          <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10">
+            <button type='submit' class='btn a_btn_primary btn-block col-lg-3 col-md-3 col-sm-6 col-xs-8 my-5'>확인</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+    
+  <!--</div>-->
+  
+  <!--<div class='col-lg-4 col-md-4 col-sm-6 col-xs-10'>-->
+  <!--  <div class="container">-->
+  <!--    <div class="form-check form-check-inline">-->
+  <!--      <label class="form-check-label">-->
+  <!--        <input class="option-input radio" type="radio" name="user_type" value=0 checked> (예비)하숙생입니다.-->
+  <!--      </label>-->
+  <!--    </div>-->
+  <!--    <div class="form-check form-check-inline">-->
+  <!--      <label class="form-check-label">-->
+  <!--        <input class="option-input radio" type="radio" name="user_type" value=1 > 하숙주인입니다.-->
+  <!--      </label>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--</div>-->
+  
+  
+  
+</body>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<head>
+  <html lang="ko">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  
+  <!--sliderbar를 위한 css-->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+
+  <!--checkbox & radio를 위한 css  -->
+  <link href="css/magic-check.css" rel="stylesheet">
+
+  
+</head>
+<body>
+  <!--검색필터 버튼-->
+  <button id="show_filter" class="btn btn-primary btn-lg btn-block btn-room_search"><i class="fa fa-filter " style="color: white;" aria-hidden="true"></i> 검색필터</button>
+  <!--검색필터 버튼 누르면 보이는 부분-->
+  <!--display 나중에 none으로 바꿔야함-->
+  <div class="filter_ye" id="filter_area" style="display: none;">
+    <form action="#" method="POST">
+      <div class="p-3">
+        <div class="row justify-content-center">
+          <!--월세-->
+          <div class='col-lg-4 col-md-4 col-sm-6 col-xs-10'>
+            <label class="form-control-label"><strong>월세</strong></label>
+            <input type="text" id="amount" readonly style="border:0; color:#ff5069; font-weight:bold;">
+            <div id="price-range" class='mb-3'></div>
+          </div>
+          <!--층수-->
+          <div class='col-lg-4 col-md-4 col-sm-6 col-xs-10'>
+            <label class="form-control-label"><strong>층수</strong></label>
+            <div class="row">
+              <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
+                <select name='floor_from' class="form-control mb-1">
+                  <option value="1" selected>1층</option>
+                  <option value="2">2층</option>
+                  <option value="3">3층</option>
+                  <option value="4">4층</option>
+                  <option value="5">5층</option>
+                </select>    
+              </div>
+              <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
+                부터
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
+                <select name='floor_to' class="form-control">
+                  <option value="1">1층</option>
+                  <option value="2">2층</option>
+                  <option value="3">3층</option>
+                  <option value="4">4층</option>
+                  <option value="5" selected>5층 이상</option>
+                </select>    
+              </div>
+              <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
+                까지
+              </div>
+            </div>
+          </div>
+          <!--방역여부-->
+          <div class='col-lg-4 col-md-4 col-sm-6 col-xs-10'>
+            <label class="form-control-label"><strong>방역 여부</strong></label>
+            <div class="container">
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="option-input radio" type="radio" name="cesco" id="cesco1" value="yes" checked> 예
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="option-input radio" type="radio" name="cesco" id="cesco2" value="no"> 아니오
+                </label>
+              </div>
+            </div>
+          </div>
+          <!--식사여부-->
+          <div class='col-lg-4 col-md-4 col-sm-6 col-xs-10'>
+            <label class="form-control-label"><strong>식사여부</strong></label>
+            <div class="container">
+              <div class="form-check form-check-inline">
+                <div class="row">
+                  <div class='col-lg-4 col-md-6 col-sm-6 col-xs-6'>
+                    <label>
+                      <input type="checkbox" name="breakfast" class="option-input checkbox"> 아침
+                    </label>
+                  </div>
+                  <div class='col-lg-4 col-md-6 col-sm-6 col-xs-6'>
+                    <label>
+                      <input type="checkbox" name="lunch" class="option-input checkbox"> 점심
+                    </label>
+                  </div>
+                  <div class='col-lg-4 col-md-6 col-sm-6 col-xs-6'>
+                    <label>
+                      <input type="checkbox" name="dinner" class="option-input checkbox"> 저녁
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--냉방기-->
+          <div class='col-lg-4 col-md-4 col-sm-6 col-xs-10'>
+            <label class="form-control-label"><strong>냉방기</strong></label>
+            <div class="container">
+              <div class="form-check form-check-inline">
+                <div class="row">
+                  <div class='col-lg-6 col-md-6 col-sm-6 col-xs-6'>
+                    <label>
+                      <input type="checkbox" name="fan" class="option-input checkbox"> 선풍기
+                    </label>
+                  </div>
+                  <div class='col-lg-6 col-md-6 col-sm-6 col-xs-6'>
+                    <label>
+                      <input type="checkbox" name="aircon" class="option-input checkbox"> 에어컨
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--화장실당사용인원수-->
+          <div class='col-lg-4 col-md-4 col-sm-6 col-xs-10'>
+            <label class="form-control-label"><strong>화장실당사용인원수</strong></label>
+            <div class="row">
+              <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
+                <select name='toilet_from' class="form-control mb-1">
+                  <option value="1" selected>1명</option>
+                  <option value="2">2명</option>
+                  <option value="3">3명</option>
+                  <option value="4">4명</option>
+                  <option value="5">5명</option>
+                  <option value="2">6명</option>
+                  <option value="3">7명</option>
+                  <option value="4">8명</option>
+                  <option value="5">9명</option>
+                  <option value="5">10명</option>
+                </select>    
+              </div>
+              <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
+                부터
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
+                <select name='toilet_to' class="form-control ">
+                  <option value="1" selected>1명</option>
+                  <option value="2">2명</option>
+                  <option value="3">3명</option>
+                  <option value="4">4명</option>
+                  <option value="5">5명</option>
+                  <option value="2">6명</option>
+                  <option value="3">7명</option>
+                  <option value="4">8명</option>
+                  <option value="5">9명</option>
+                  <option value="5" selected>10명 이상</option>
+                </select>    
+              </div>
+              <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
+                까지
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!--세탁기사용인원수-->
+          <div class='col-lg-4 col-md-4 col-sm-6 col-xs-10'>
+            <label class="form-control-label"><strong>세탁기당사용인원수</strong></label>
+            <div class="row">
+              <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
+                <select name='washing_from' class="form-control mb-1">
+                  <option value="1" selected>1명</option>
+                  <option value="2">2명</option>
+                  <option value="3">3명</option>
+                  <option value="4">4명</option>
+                  <option value="5">5명</option>
+                  <option value="2">6명</option>
+                  <option value="3">7명</option>
+                  <option value="4">8명</option>
+                  <option value="5">9명</option>
+                  <option value="5">10명</option>
+                </select>    
+              </div>
+              <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
+                부터
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
+                <select name='washing_to' class="form-control">
+                  <option value="1" selected>1명</option>
+                  <option value="2">2명</option>
+                  <option value="3">3명</option>
+                  <option value="4">4명</option>
+                  <option value="5">5명</option>
+                  <option value="2">6명</option>
+                  <option value="3">7명</option>
+                  <option value="4">8명</option>
+                  <option value="5">9명</option>
+                  <option value="5" selected>10명 이상</option>
+                </select>    
+              </div>
+              <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
+                까지
+              </div>
+            </div>
+          </div>
+          <!--여성전용-->
+          <div class='col-lg-4 col-md-4 col-sm-6 col-xs-10'>
+            <label class="form-control-label"><strong>여성 전용</strong></label>
+            <div class="container">
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="option-input radio" type="radio" name="f_only" id="cesco1" value="yes" checked> 예
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="option-input radio" type="radio" name="f_only" id="cesco2" value="no"> 아니오
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+          <button type="submit" class="btn a_btn_primary btn-block col-lg-3 col-md-3 col-sm-6 col-xs-8 mb-3">적용</button>
+      </div>
+    </form>
+  </div>
+ 
+<div id="slider-range"></div>
+<div id="map" style="width:100%;height:350px;"></div>
+  <div class="text-center">
+    <a href='/hait/room_list' type='button' class="form-control">더 보기</a>
+  </div>
+  
+  <div class="card my-3 mx-3 py-3 pl-5">
+    집 반복문으로 출력하삼
+  </div>
+ 
+ 
+ 
+<!--지도하려면먼저나와야해-->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=20d3a1b3f092040671588d5b70c1d4a1"></script>
+ 
+  
+  <!--sliderbar를 위한 script-->
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#price-range" ).slider({
+      range: true,
+      min: 0,
+      max: 200,
+      values: [ 75, 200 ],
+      slide: function( event, ui ) {
+        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+      }
+    });
+    $( "#amount" ).val( $( "#slider-range" ).slider( "values", 0 ) + "만 원" +
+        " - " + $( "#slider-range" ).slider( "values", 1 ) + "만 원");
+  } );
+  //   $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+  //     " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+  // } );
+  </script>
+
+  <!--검색필터 누르면 창 내려옴-->
+  <script>
+    $( "#show_filter" ).click(function() {
+      $( "#filter_area" ).slideToggle( "slow" );
+    });
+  </script>
+  
+  <script>
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+        mapOption = { 
+            center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+        };
+    
+    var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+    
+    // 마커를 표시할 위치와 title 객체 배열입니다 
+    var positions = [
+        {
+            title: '카카오', 
+            latlng: new daum.maps.LatLng(33.450705, 126.570677)
+        },
+        {
+            title: '생태연못', 
+            latlng: new daum.maps.LatLng(33.450936, 126.569477)
+        },
+        {
+            title: '텃밭', 
+            latlng: new daum.maps.LatLng(33.450879, 126.569940)
+        },
+        {
+            title: '근린공원',
+            latlng: new daum.maps.LatLng(33.451393, 126.570738)
+        }
+    ];
+    
+    // 마커 이미지의 이미지 주소입니다
+    var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+        
+    for (var i = 0; i < positions.length; i ++) {
+        
+        // 마커 이미지의 이미지 크기 입니다
+        var imageSize = new daum.maps.Size(24, 35); 
+        
+        // 마커 이미지를 생성합니다    
+        var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize); 
+        
+        // 마커를 생성합니다
+        var marker = new daum.maps.Marker({
+            map: map, // 마커를 표시할 지도
+            position: positions[i].latlng, // 마커를 표시할 위치
+            title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+            image : markerImage // 마커 이미지 
+        });
+    }
+  </script>
+  
+  
+  
+</body>
