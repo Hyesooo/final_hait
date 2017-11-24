@@ -7,8 +7,8 @@
 
 <body>
   <div class="mt-5"></div>
-  <form action="/home_enrollment" method="POST">
-    <input type="hidden" name="user_id" value = <%=current_user.id%>>
+  <%=form_tag "/home_enrollment" , method:"POST"%>
+    <%= hidden_field_tag "user_id" , current_user.id %>
     <div class="form-group row justify-content-center">
       <div class="col-lg-6 col-md-6 col-sm-8 col-xs-10">
         <div class="mb-5">
@@ -17,27 +17,27 @@
           </p>
           <p>
             <label class="form-control-label" for="house_name">하숙집 이름</label>
-            <input type="text" class="form-control" id="house_name" name ="house_name" placeholder="">
+            <%= text_field_tag "house_name" , class:"form-control", id:"house_name" %>
           </p>
           <p>
             <div class="form-row">
               <div class="form-group col-md-3">
                 <label for="inputEmail4" class="col-form-label">우편번호</label>
-                <input type="text" class="form-control" id="inputEmail4" name="post_code" placeholder="'-'를 빼고 입력하세요">
+                <%= text_field_tag "post_code" ,class:"form-control", id:"inputEmail4" ,placeholder:"'-'를 빼고 입력하세요"%>
               </div>
               <div class="form-group col-md-9">
                 <label for="inputPassword4" class="col-form-label">주소</label>
-                <input type="text" class="form-control" id="inputPassword4" name="address" placeholder="ex) 서울시 용산구 청파로 47길 100">
+                <%= text_field_tag "address" ,class:"form-control", id:"inputPassword4", placeholder:"ex) 서울시 용산구 청파로 47길 100"%>
               </div>
             </div>
             <div class="form-group">
               <label for="inputAddress" class="col-form-label">상세주소</label>
-              <input type="text" class="form-control" id="inputAddress" name="detail_address" placeholder="ex) 숙명여자대학교">
+              <%= text_field_tag "detail_address", class:"form-control" , id:"inputAddress", placeholder:"ex) 숙명여자대학교"%>
             </div>
           </p>
           <p>
             <label class="form-control-label" for="user_phone">하숙집 연락처</label>
-            <input type="text" class="form-control" id="user_phone" name ="phone_number"placeholder="">
+            <%= text_field_tag "phone_number", class:"form-control" ,id:"user_phone"%>
           </p>
       </div>
       <div class="mb-5">
@@ -45,9 +45,56 @@
       </div>
       <div class="row justify-content-center">
       <div class ="col-lg-4 col-md-4 col-sm-4 col-xs-6" >
-        <button class='btn btn-block a_btn_primary mb-5'>등록하기</button>
+        <%= submit_tag "등록하기" , class:'btn btn-block a_btn_primary mb-5'%>
       </div>
       </div>
     </div>
   </form>
 </body>
+
+
+
+
+  <!--<form action="/home_enrollment" method="POST">-->
+  <!--  <input type="hidden" name="user_id" value = <%=current_user.id%>>-->
+  <!--  <div class="form-group row justify-content-center">-->
+  <!--    <div class="col-lg-6 col-md-6 col-sm-8 col-xs-10">-->
+  <!--      <div class="mb-5">-->
+  <!--        <p>-->
+  <!--          <h5><i class="fa fa-user-circle-o" aria-hidden="true"></i> 하숙 등록</h5>-->
+  <!--        </p>-->
+  <!--        <p>-->
+  <!--          <label class="form-control-label" for="house_name">하숙집 이름</label>-->
+  <!--          <input type="text" class="form-control" id="house_name" name ="house_name" placeholder="">-->
+  <!--        </p>-->
+  <!--        <p>-->
+  <!--          <div class="form-row">-->
+  <!--            <div class="form-group col-md-3">-->
+  <!--              <label for="inputEmail4" class="col-form-label">우편번호</label>-->
+  <!--              <input type="text" class="form-control" id="inputEmail4" name="post_code" placeholder="'-'를 빼고 입력하세요">-->
+  <!--            </div>-->
+  <!--            <div class="form-group col-md-9">-->
+  <!--              <label for="inputPassword4" class="col-form-label">주소</label>-->
+  <!--              <input type="text" class="form-control" id="inputPassword4" name="address" placeholder="ex) 서울시 용산구 청파로 47길 100">-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--          <div class="form-group">-->
+  <!--            <label for="inputAddress" class="col-form-label">상세주소</label>-->
+  <!--            <input type="text" class="form-control" id="inputAddress" name="detail_address" placeholder="ex) 숙명여자대학교">-->
+  <!--          </div>-->
+  <!--        </p>-->
+  <!--        <p>-->
+  <!--          <label class="form-control-label" for="user_phone">하숙집 연락처</label>-->
+  <!--          <input type="text" class="form-control" id="user_phone" name ="phone_number"placeholder="">-->
+  <!--        </p>-->
+  <!--    </div>-->
+  <!--    <div class="mb-5">-->
+  <!--      <h4 class="text-primary text-center">* 하숙집은 등록 후 수정 및 삭제가 어렵습니다. *<br> * 신중하게 등록해주세요. *</h3>-->
+  <!--    </div>-->
+  <!--    <div class="row justify-content-center">-->
+  <!--    <div class ="col-lg-4 col-md-4 col-sm-4 col-xs-6" >-->
+  <!--      <button class='btn btn-block a_btn_primary mb-5'>등록하기</button>-->
+  <!--    </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--</form>-->
