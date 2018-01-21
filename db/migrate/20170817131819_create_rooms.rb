@@ -10,14 +10,15 @@ class CreateRooms < ActiveRecord::Migration
       t.string :lunch
       t.string :dinner
       t.integer :cesco
-      t.string :air_con
       t.string :fan
       t.float :toilet
       t.float :washing
       t.integer :woman_only
-      
+      t.string :img_url
       
       t.integer :house_id
+      
+      
 
       t.timestamps null: false
     end

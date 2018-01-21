@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<head>
+  <html lang="ko">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <section class="section__detail container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10 mb-3">
+        <img src="<%= @room_info.img_url.url %>">
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10 mb-3">
+        <h6><strong><i class="fa fa-home" aria-hidden="true"></i> 방 정보</strong></h6>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10 mb-3">
+        <table class="detail_table">
+          <tr class="detail_tr">
+              <td class="detail_td">층수</td>
+              <td class="detail_td_right"><%=@room_info.floor%>층</td>
+              <td class="detail_td pl-3">월세</td>
+              <td class="detail_td_right"><%=@room_info.price%>원</td>
+          </tr>
+          <tr class="detail_tr">
+              <td class="detail_td">식사여부</td> 
+              <td class="detail_td_right"><%=@room_info.breakfast%> <%=@room_info.lunch%> <%=@room_info.dinner%> 제공</td>
+              <td class="detail_td pl-3">냉방여부</td>
+              <%if @room_info.fan != nil%>
+                <td class="detail_td_right"><%=@room_info.fan%> 제공</td>
+              <%else%>
+                <td class="detail_td_right">X</td>
+              <%end%>
+              
+         </tr>
+         <tr class="detail_tr">
+              <td class="detail_td ">화장실 당 사용 인원 수</td>
+              <td class="detail_td_right"><%=@room_info.toilet%></td>
+              <td class="detail_td pl-3">세탁기 당 사용 인원 수</td>
+              <td class="detail_td_right"><%=@room_info.washing%></td>
+          </tr>
+        </div>    
+          <tr class="detail_tr">
+            <td class="detail_td">여성 전용</td>
+            <% if @room_info.woman_only == 1%>
+              <td class="detail_td_right">O</td>
+            <%else%>
+            <td class="detail_td_right">X</td>
+              <%end%>
+            <td class="detail_td  pl-3 ">방역여부</td>
+            <%if @room_info.cesco == 1%>
+              <td class="detail_td_right">있음</td>
+            <%else%>
+              <td class="detail_td_right">없음</td>  
+            <%end%>
+        </tr>
+        </table> 
+    </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10  mb-3">
+        <h6><strong><i class="fa fa-phone" aria-hidden="true"></i> 연락처</strong></h6>
+        0<%= @room_info.house.user.phone %>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10  mb-3">
+        <h6><strong><i class="fa fa-map-marker" aria-hidden="true"></i> 위치</strong></h6>
+        <%= @room_info.house.address %> <%= @room_info.house.detail_address %>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10  mb-3">
+        <div id="map" style="width:100%;height:350px;"></div>
+      </div>
+    </div>
+  </section>
+</body>    
+
+
+
+<!--지도 띄우는 스크립트-->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=앱키입력하기&libraries=services"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 1 // 지도의 확대 레벨
+    };  
+
+// 지도를 생성합니다    
+var map = new daum.maps.Map(mapContainer, mapOption); 
+
+// 주소-좌표 변환 객체를 생성합니다
+var geocoder = new daum.maps.services.Geocoder();
+
+// 주소로 좌표를 검색합니다
+// geocoder.addressSearch("서울 용산구 청파로47나길 50", function(result, status) {
+geocoder.addressSearch("#{<%=@room_info.house.address%>}", function(result, status) {
+
+  // 정상적으로 검색이 완료됐으면 
+   if (status === daum.maps.services.Status.OK) {
+
+      var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+
+      // 결과값으로 받은 위치를 마커로 표시합니다
+      var marker = new daum.maps.Marker({
+          map: map,
+          position: coords
+      });
+
+      // // 인포윈도우로 장소에 대한 설명을 표시합니다
+      // var infowindow = new daum.maps.InfoWindow({
+      //     content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+      // });
+      // infowindow.open(map, marker);
+
+      // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+      map.setCenter(coords);
+  } 
+});    
+</script>

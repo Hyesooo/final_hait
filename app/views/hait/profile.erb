@@ -4,56 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body id='profile'>
-    <section class="section__profile container">
-    <form>
-        <div class="form-group row justify-content-center">
-            <div class="col-lg-6 col-md-6 col-sm-8 col-xs-10">
-                <div class="mb-5">
-                    <p>
-                    <h5><i class="fa fa-user-circle-o" aria-hidden="true"></i>내 계정</h5>
-                    </p>
-                    <p>
-                        <label class="form-control-label" for="user_name">이름</label>
-                        <input type="text" class="form-control" id="user_name" placeholder="">
-                    </p>
-                    <p>
-                        <label class="form-control-label" for="user_email">이메일</label>
-                        <input type="text" class="form-control" id="user_email" placeholder="">
-                    </p>
-                        <label class="form-control-label" for="user_phone">휴대폰 번호(번호만 입력)</label>
-                        <input type="text" class="form-control" id="user_phone" placeholder="ex)01012345678">
-                    </p>
-                </div>
-                <div>
-                    <p>
-                    <h5><i class="fa fa-unlock-alt" aria-hidden="true"></i>비밀번호 변경</h5>
-                    </p>
-                    <p>
-                        <label class="form-control-label" for="password">현재 비밀번호</label>
-                        <input type="text" class="form-control" id="password" placeholder="">
-                    </p>
-                    <p>
-                        <label class="form-control-label" for="new_password">새로운 비밀번호</label>
-                        <input type="text" class="form-control" id="user_name" placeholder="">
-                    </p>
-                    <p>
-                        <label class="form-control-label" for="password_confirm">비밀번호 확인</label>
-                        <input type="text" class="form-control" id="password_confirm" placeholder="">
-                    </p>
-                </div>
-            </div>
+<body>
+  <section class="section__profile container">
+    <div class="form-group row justify-content-center">
+      <div class="col-lg-6 col-md-6 col-sm-8 col-xs-10">
+        <div class="mx-5 mb-5">
+          <p>
+          <h5><i class="fa fa-user-circle-o" aria-hidden="true"></i>내 계정</h5>
+          </p>
+          <% if current_user.user_type == 0 %>
+            <h6><strong>하숙생입니다.</strong></h6>
+          <% else %>
+            <h6><strong>하숙 주인입니다.</strong></h6>
+          <% end %>
+          <p>
+            <label class="form-control-label" for="user_name">이름</label>
+            <input type="text" class="form-control" id="user_name" value="<%= current_user.name %>" disabled>
+          </p>
+          <p>
+            <label class="form-control-label" for="user_email">이메일</label>
+            <input type="text" class="form-control" id="user_email" value="<%= current_user.email %>" disabled>
+          </p>
+            <label class="form-control-label" for="user_phone">휴대폰 번호</label>
+            <input type="text" class="form-control" id="user_phone" value="0<%= current_user.phone %>" disabled>
+          </p>
         </div>
-        <div class="row justify-content-center mt-3">
-            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-3 px-3"><a href="/hait/mypage" class="btn btn-block a_btn_primary">
-                <i class="fa fa-times" aria-hidden="true"></i> 취소</a>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-3 px-3"><button type="submit" class="btn btn-block a_btn_primary">
-                <i class="fa fa-check" aria-hidden="true"></i> 확인</a>
-            </div>
-        </div>
-    </form>
-  </div>
-    </section>
+          <!--<div>-->
+          <!--  <p>-->
+          <!--    <h5><i class="fa fa-unlock-alt" aria-hidden="true"></i>비밀번호 변경</h5>-->
+          <!--  </p>-->
+          <!--  <p>-->
+          <!--    <label class="form-control-label" for="password">현재 비밀번호</label>-->
+          <!--    <input type="text" class="form-control" id="password" placeholder="">-->
+          <!--  </p>-->
+          <!--  <p>-->
+          <!--    <label class="form-control-label" for="new_password">새로운 비밀번호</label>-->
+          <!--    <input type="text" class="form-control" id="user_name" placeholder="">-->
+          <!--  </p>-->
+          <!--  <p>-->
+          <!--    <label class="form-control-label" for="password_confirm">비밀번호 확인</label>-->
+          <!--    <input type="text" class="form-control" id="password_confirm" placeholder="">-->
+          <!--  </p>-->
+          <!--</div>-->
+      </div>
+    </div>
+    <div class="row justify-content-center mx-5 mt-3">
+      <div class="col-lg-3 col-md-3 col-sm-4 col-xs-3 px-3"><a href="/hait/mypage" class="btn btn-block a_btn_primary">
+        <i class="fa fa-times" aria-hidden="true"></i> 이전페이지</a>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-4 col-xs-3 px-3"><a href="/hait/profile_update_view/<%= current_user.id %>" class="btn btn-block a_btn_primary">
+        <i class="fa fa-pencil" aria-hidden="true"></i> 수정하기</a>
+      </div>
+    </div>
+  </section>
 </body>    
 

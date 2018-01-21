@@ -5,17 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <section class="section__profile container">
-  <form action="/room_enrollment" method="POST">
+  <form action="/room_enrollment" method="POST" enctype="multipart/form-data">
     <input type ="hidden" name = "house_id" value = <%=@house.id%>>
     <div class="form-group row justify-content-center">
       <div class="col-lg-6 col-md-6 col-sm-8 col-xs-10">
-        <div class="mb-5">
           <p>
             <h5><i class="fa fa-user-circle-o" aria-hidden="true"></i> 방 등록</h5>
           </p>
           <p>
+            <input type="file" name="pic" accept="image/*">
+          </p>
+          </p>
+          <p>
             <label class="form-control-label"><strong>월세(숫자로만 입력)</strong></label>
-            <input type="text" class="form-control" name="price" placeholder="ex) 3000000">
+            <input type="integer" class="form-control" name="price" placeholder="ex) 3000000">
           </p>
           <p>
             <label class="form-control-label"><strong>호수(숫자로만 입력)</strong></label>
@@ -25,34 +28,34 @@
           <div class="row">
             <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
               <select name='floor' class="form-control mb-1">
-                <option value="1" selected>1층</option>
-                <option value="2">2층</option>
-                <option value="3">3층</option>
-                <option value="4">4층</option>
-                <option value="5">5층</option>
+                <option value=1 selected>1층</option>
+                <option value=2>2층</option>
+                <option value=3>3층</option>
+                <option value=4>4층</option>
+                <option value=5>5층</option>
               </select>    
             </div>
           </div>
           <label class="form-control-label"><strong>방 현재 상태</strong></label>
+          <div class="row">
+            <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
+              <label>
+                <input type="radio" name="room_statement" value=0 class="option-input checkbox"> 즉시 입주
+              </label>
+            </div>
+            <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
+              <label>
+                <input type="radio" name="room_statement" value=1 class="option-input checkbox"> 곧 입주
+              </label>
+            </div>
+            <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
+              <label>
+                <input type="radio" name="room_statement" value=2 class="option-input checkbox"> 거래 완료
+              </label>
+            </div>
+          </div>
+          <label class="form-control-label"><strong>식사 여부</strong></label>
           <div class="row justify-content-around">
-          <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
-            <label>
-              <input type="radio" name="room_statement" value="0" class="option-input checkbox"> 즉시 입주
-            </label>
-          </div>
-          <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
-            <label>
-              <input type="radio" name="room_statement" value="1" class="option-input checkbox"> 곧 입주
-            </label>
-          </div>
-          <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
-            <label>
-              <input type="radio" name="room_statement" value="2" class="option-input checkbox"> 거래 완료
-            </label>
-          </div>
-        </div>
-        <label class="form-control-label"><strong>식사 여부</strong></label>
-        <div class="row justify-content-around">
           <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
           <label>
             <input type="checkbox" name="breakfast" value="아침" class="option-input checkbox"> 아침
@@ -69,58 +72,53 @@
             </label>
           </div>
         </div>
-        <!---->
+        <!——>
         <label class="form-control-label"><strong>방역</strong></label>
         <div class="row ">
           <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
           <label>
-            <input type="radio" name="cesco" value="1" class="option-input checkbox"> YES
+            <input type="radio" name="cesco" value=1 class="option-input checkbox"> YES
           </label>
           </div>
           <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
             <label>
-              <input type="radio" name="cesco" value="0" class="option-input checkbox"> NO
+              <input type="radio" name="cesco" value=0 class="option-input checkbox"> NO
             </label>
           </div>
         </div>
-        <!---->
+        <!——>
         <p>
             <label class="form-control-label"><strong>화장실 당 사용인원(숫자로만 입력)</strong></label>
-            <input type="text" class="form-control" name="toilet" placeholder="ex) 2.5">
+            <input type="float" class="form-control" name="toilet" placeholder="ex) 2.5">
           </p>
           <p>
             <label class="form-control-label"><strong>세탁기 당 사용인원(숫자로만 입력)</strong></label>
-            <input type="text" class="form-control" name="washing" placeholder="ex) 4.5">
+            <input type="float" class="form-control" name="washing" placeholder="ex) 4.5">
           </p>
-        <!---->
+        <!——>
         <label class="form-control-label"><strong>냉방기</strong></label>
         <div class="row ">
           <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
           <label>
-            <input type="checkbox" name="air_con" value ="에어컨" class="option-input checkbox"> 에어컨
+            <input type="radio" name="fan" value ="에어컨" class="option-input checkbox"> 에어컨
           </label>
           </div>
           <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
             <label>
-              <input type="checkbox" name="fan" value="선풍기" class="option-input checkbox"> 선풍기
+              <input type="radio" name="fan" value="선풍기" class="option-input checkbox"> 선풍기
             </label>
           </div>
         </div>
-        <!---->
-        
-        <!---->
-        </div>
-        <!---->
         <label class="form-control-label"><strong>여성전용</strong></label>
         <div class="row ">
           <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
           <label>
-            <input type="radio" name="woman_only" class="option-input checkbox"> YES
+            <input type="radio" name="woman_only" value=1 class="option-input checkbox"> YES
           </label>
           </div>
           <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
             <label>
-              <input type="radio" name="woman_only" class="option-input checkbox"> NO
+              <input type="radio" name="woman_only" value=0 class="option-input checkbox"> NO
             </label>
           </div>
         </div>
@@ -129,146 +127,6 @@
             <button type ="submit" class="btn a_btn_primary btn-block btn-lg mt-5">등록하기</button>
           </div>
         </div>
-        <!---->
-      </div>
-    </div>
-  </form>
-</section>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!DOCTYPE html>
-<head>
-  <html lang="ko">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<section class="section__profile container">
-  <form action="/room_enrollment" method="POST">
-    <input type ="hidden" name = "house_id" value = <%=@house.id%>>
-    <div class="form-group row justify-content-center">
-      <div class="col-lg-6 col-md-6 col-sm-8 col-xs-10">
-        <div class="mb-5">
-          <p>
-            <h5><i class="fa fa-user-circle-o" aria-hidden="true"></i> 방 등록</h5>
-          </p>
-          <p>
-            <label class="form-control-label"><strong>월세(숫자로만 입력)</strong></label>
-            <input type="text" class="form-control" name="price" placeholder="ex) 3000000">
-          </p>
-          <p>
-            <label class="form-control-label"><strong>호수(숫자로만 입력)</strong></label>
-            <input type="text" class="form-control" name="room_number" placeholder="ex) 303">
-          </p>
-          <label class="form-control-label"><strong>층수</strong></label>
-          <div class="row">
-            <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
-              <select name='floor' class="form-control mb-1">
-                <option value="1" selected>1층</option>
-                <option value="2">2층</option>
-                <option value="3">3층</option>
-                <option value="4">4층</option>
-                <option value="5">5층</option>
-              </select>    
-            </div>
-          </div>
-          <label class="form-control-label"><strong>방 현재 상태</strong></label>
-          <div class="row justify-content-around">
-          <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
-            <label>
-              <input type="radio" name="room_statement" value="0" class="option-input checkbox"> 즉시 입주
-            </label>
-          </div>
-          <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
-            <label>
-              <input type="radio" name="room_statement" value="1" class="option-input checkbox"> 곧 입주
-            </label>
-          </div>
-          <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
-            <label>
-              <input type="radio" name="room_statement" value="2" class="option-input checkbox"> 거래 완료
-            </label>
-          </div>
-        </div>
-        <label class="form-control-label"><strong>식사 여부</strong></label>
-        <div class="row justify-content-around">
-          <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
-          <label>
-            <input type="checkbox" name="breakfast" value="아침" class="option-input checkbox"> 아침
-          </label>
-          </div>
-          <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
-            <label>
-              <input type="checkbox" name="lunch" value="점심" class="option-input checkbox"> 점심
-            </label>
-          </div>
-          <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
-            <label>
-              <input type="checkbox" name="dinner" value="저녁" class="option-input checkbox"> 저녁
-            </label>
-          </div>
-        </div>
-        <!---->
-        <label class="form-control-label"><strong>방역</strong></label>
-        <div class="row ">
-          <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
-          <label>
-            <input type="radio" name="cesco" value="1" class="option-input checkbox"> YES
-          </label>
-          </div>
-          <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
-            <label>
-              <input type="radio" name="cesco" value="0" class="option-input checkbox"> NO
-            </label>
-          </div>
-        </div>
-        <!---->
-        <p>
-            <label class="form-control-label"><strong>화장실 당 사용인원(숫자로만 입력)</strong></label>
-            <input type="text" class="form-control" name="toilet" placeholder="ex) 2.5">
-          </p>
-          <p>
-            <label class="form-control-label"><strong>세탁기 당 사용인원(숫자로만 입력)</strong></label>
-            <input type="text" class="form-control" name="washing" placeholder="ex) 4.5">
-          </p>
-        <!---->
-        <label class="form-control-label"><strong>냉방기</strong></label>
-        <div class="row ">
-          <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
-          <label>
-            <input type="checkbox" name="air_con" value ="에어컨" class="option-input checkbox"> 에어컨
-          </label>
-          </div>
-          <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
-            <label>
-              <input type="checkbox" name="fan" value="선풍기" class="option-input checkbox"> 선풍기
-            </label>
-          </div>
-        </div>
-        <!---->
-        
-        <!---->
-        </div>
-        <!---->
-        <label class="form-control-label"><strong>여성전용</strong></label>
-        <div class="row ">
-          <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
-          <label>
-            <input type="radio" name="woman_only" class="option-input checkbox"> YES
-          </label>
-          </div>
-          <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
-            <label>
-              <input type="radio" name="woman_only" class="option-input checkbox"> NO
-            </label>
-          </div>
-        </div>
-        <div class="row justify-content-center">
-          <div class='col-lg-4 col-md-4 col-sm-4 col-xs-4'>
-            <button type ="submit" class="btn a_btn_primary btn-block btn-lg mt-5">등록하기</button>
-          </div>
-        </div>
-        <!---->
       </div>
     </div>
   </form>

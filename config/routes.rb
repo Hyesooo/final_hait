@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations"}
+
   get 'first_login' => 'hait#first_login', as: :user_root
   
   post 'hait/user_type_update'
@@ -18,9 +19,15 @@ Rails.application.routes.draw do
   
   get 'hait/room_list'
   
-  get 'hait/profile'
+  get 'hait/profile/:user_id' => 'hait#profile'
+  
+  get 'hait/profile_update_view/:user_id' => 'hait#profile_update_view'
+  
+  post 'hait/profile_update/:user_id' => 'hait#profile_update'
   
   get 'hait/room_detail/:room_id' => 'hait#room_detail'
+  
+  get 'hait/room_detail2/:room_id' => 'hait#room_detail2'
   
   get 'hait/home_management'
   
@@ -30,13 +37,19 @@ Rails.application.routes.draw do
   
   get 'hait/ticket_buy'
   
-  get 'hait/ticket_history'
+  get 'hait/ticket_history/:user_id' => 'hait#ticket_history'
+  
+  get 'hait/use_ticket/:user_id/:room_id' => 'hait#use_ticket'
+  
+  get 'hait/buy_ticket/:user_id' => 'hait#buy_ticket'
   
   post '/home_enrollment' => 'hait#home_enrollment'
   
   post '/room_enrollment' => 'hait#room_enrollment'
   
-  post '/mypage_update' => 'hait#mypage_update'
+  post '/hait/room_update' => 'hait#room_update'
+  
+  get 'hait/room_update_view/:room_id' => 'hait#room_update'
   
   root 'hait#index'
 

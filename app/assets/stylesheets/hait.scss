@@ -297,6 +297,7 @@ button:focus {
   background-color: rgba(0,0,0,0.05);
 }
 
+
 .form-control:focus {
   background-color: rgba(0,0,0,0.05);
 }
@@ -446,8 +447,9 @@ h1.big { font-size: 100px; }
 
 // room_search
 .filter_ye {
-  background-color: white;
+  background-color: white; 
 }
+
 .option-input {
   -webkit-appearance: none;
   -moz-appearance: none;

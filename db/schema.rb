@@ -47,11 +47,11 @@ ActiveRecord::Schema.define(version: 20170817154708) do
     t.string   "lunch"
     t.string   "dinner"
     t.integer  "cesco"
-    t.string   "air_con"
     t.string   "fan"
     t.float    "toilet"
     t.float    "washing"
     t.integer  "woman_only"
+    t.string   "img_url"
     t.integer  "house_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
@@ -60,9 +60,10 @@ ActiveRecord::Schema.define(version: 20170817154708) do
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
-    t.integer  "user_type"
+    t.integer  "user_type",              default: 0,  null: false
     t.string   "name"
     t.integer  "phone"
+    t.integer  "ticket"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

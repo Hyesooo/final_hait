@@ -1,29 +1,41 @@
+<!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
 <div class="container"> 
+<div class = "logo"></div>
   <div class="login-box">
-    <div class="brand">
-      <a href="/about"><img style="height: 40px;" src="/images/logo.png" alt="logo"></a>
-    </div><br/>
+    <!--<div class="brand">-->
+    <!--  <a href="/about"><img style="height: 40px;" src="/images/logo.png" alt="logo"></a>-->
+    <!--</div><br/>-->
+    <h1>Log In</h1>
+  
+  
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="field">
+          <div class="input">
               <!--<%= f.label :email %><br>-->
-              <%= f.email_field :email, autofocus: true %>
+              <!--<%= f.email_field :email, :class => 'form-control', :placeholder => '아이디를 입력하세요', autofocus: true %>-->
+              <%= f.email_field :email, :placeholder => '이메일을 입력하세요', :id => 'username', autofocus: true %>
           </div>
-          <div class="field">
+          <!--<div class="mt-2"></div>-->
+          <div class="input">
             <!--<%= f.label :password %><br>-->
-            <%= f.password_field :password, autocomplete: "off" %>
+            <!--<%= f.password_field :password, :class => 'form-control', :placeholder => '비밀번호를 입력하세요', autocomplete: "off" %>-->
+            <!--<%= f.password_field :password, :class => 'field',:style=> "border:none;", :placeholder => '비밀번호를 입력하세요', autocomplete: "off" %>-->
+            <%= f.password_field :password, :class => 'input', :placeholder => '비밀번호를 입력하세요', :id => 'password', autocomplete: "off" %>
           </div>
-          <% if devise_mapping.rememberable? -%>
-          <div class="field">
-            <span class="remem">
-              <%= f.check_box :remember_me %> 
-            </span>
-            Remember me
-          </div><br />
-          <% end -%>
+          <!--<% if devise_mapping.rememberable? -%>-->
+          <!--<div class="field mt-3">-->
+          <!--  <span class="remem">-->
+          <!--    <%= f.check_box :remember_me %> -->
+          <!--  </span>-->
+          <!--  Remember me-->
+          <!--</div><br />-->
+          <!--<% end -%>-->
       
-      <div class="actions">
-        <%= f.submit "Log in", :class => "btn btn-secondary" %>
-      </div><br />
+      <!--<div class="actions">-->
+      <!--  <%= f.submit "Log in", :class => "btn bg-primary", :style => "margin-top: 20px; width: 80;" %>-->
+      <!--</div><br />-->
+      <div class = "actions">
+        <%= f.submit "Log In",:id => "button", :style => "padding-left: 20px;" %>
+      </div>
     <% end %>
     
     <%= render "devise/shared/links" %>

@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <!--navbar-->
     <nav class="navbar navbar-expand-lg navbar-primary bg-white">
-      <a class="navbar-brand" href="/"><img src="/images/logo.png" alt ="logo"></a>
+      <!--<a class="navbar-brand" href="/"><img src="/images/mainlogo.png" alt ="logo"></a>-->
+      <a class="navbar-brand" href="/"><img src="/images/mainlogo.png" alt ="logo" class="mainlogo"></a>
       <button class="navbar-toggler"  type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         메뉴
       </button>
@@ -16,25 +17,23 @@
           <li class="nav-item active">
             <a class="nav-link" href="/hait/room_search">방 검색</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/hait/home_management">하숙 관리</a>
-          </li>
           <%if user_signed_in? %>
+            <% if current_user.user_type == 1 %>
+              <li class="nav-item">
+                <a class="nav-link" href="/hait/home_management">하숙 관리</a>
+              </li>
+            <%end%>
           <li class="nav-item">
             <a class="nav-link" href="/users/sign_out">로그아웃</a>
+          </li>
+                    <li class="nav-item">
+            <a class="nav-link" href="/hait/mypage">마이페이지</a>
           </li>
           <% else %>
           <li class="nav-item">
             <a class="nav-link" href="/users/sign_in">로그인</a>
           </li>
           <% end %>
-          <li class="nav-item">
-            <a class="nav-link" href="/hait/room_like">찜목록</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/hait/mypage">마이페이지</a>
-          </li>
-        </ul>
       </div>
     </nav>
     <!--//navbar-->

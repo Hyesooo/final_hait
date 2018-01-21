@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<head>
+    <html lang="ko">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body id='profile'>
+  <section class="section__profile container">
+    <form action="/hait/profile_update/<%= current_user.id %>" method="POST">
+      <div class="form-group row justify-content-center">
+        <div class="col-lg-6 col-md-6 col-sm-8 col-xs-10">
+          <div class="mx-5 mb-5">
+            <p>
+            <h5><i class="fa fa-user-circle-o" aria-hidden="true"></i>내 계정</h5>
+            </p>
+            <p>
+              <label class="form-control-label" for="user_name">이름</label>
+              <input name="name" type="string" class="form-control" id="user_name" value="<%= current_user.name %>" >
+            </p>
+            <p>
+              <label class="form-control-label" for="user_email">이메일</label>
+              <input type="email" class="form-control" id="user_email" value="<%= current_user.email %>" disabled >
+            </p>
+              <label class="form-control-label" for="user_phone">휴대폰 번호('-' 제외, 번호만 입력)</label>
+              <input name="phone" type="number" class="form-control" id="user_phone" value=<%= current_user.phone %>>
+            </p>
+          </div>
+            <!--<div>-->
+            <!--  <p>-->
+            <!--    <h5><i class="fa fa-unlock-alt" aria-hidden="true"></i>비밀번호 변경</h5>-->
+            <!--  </p>-->
+            <!--  <p>-->
+            <!--    <label class="form-control-label" for="password">현재 비밀번호</label>-->
+            <!--    <input name="current_password" type="password" class="form-control">-->
+            <!--  </p>-->
+            <!--  <p>-->
+            <!--    <label class="form-control-label" for="new_password">새로운 비밀번호</label>-->
+            <!--    <input name="new_password" type="password" class="form-contro"l>-->
+            <!--  </p>-->
+            <!--  <p>-->
+            <!--    <label class="form-control-label" for="password_confirm">비밀번호 확인</label>-->
+            <!--    <input name="password_confirm" type="password" class="form-control" >-->
+            <!--  </p>-->
+            <!--</div>-->
+        </div>
+      </div>
+      <div class="row justify-content-center mx-5 mt-3">
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-3 px-3"><a href="/hait/profile/<%= current_user.id %>" class="btn btn-block a_btn_primary">
+          <i class="fa fa-times" aria-hidden="true"></i> 취소</a>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-3 px-3"><button type="submit" class="btn btn-block a_btn_primary">
+          <i class="fa fa-check" aria-hidden="true"></i> 확인</button>
+        </div>
+      </div>
+    </form>
+  </section>
+</body>    
+

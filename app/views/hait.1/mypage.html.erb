@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+  <html lang="ko">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <section class="section__profile container">
+    <div class='container mt-5 mx-10'>
+      <div class="mb-5 text-center">
+        <h5><i class="fa fa-user-circle-o" aria-hidden="true"></i> 마이페이지</h5>
+      </div>
+      <div class="row justify-content-center text-center mb-lg-5 mb-md-5 mb-sm-3 mb-xs-3">
+        <div class="col-lg-2 col-md-0 col-sm-0 col-xs-0"></div>
+        <a class="col-lg-2 col-md-3 col-sm-12 col-xs-12" href="/hait/ticket_buy"><img src="/images/purchase_hs.png" alt="이용권구매">
+        <a class="col-lg-2 col-md-3 col-sm-12 col-xs-12" href="/hait/ticket_history"><img src="/images/mypage_ticket.png" alt="이용권현황"></a>
+        <a class="col-lg-2 col-md-3 col-sm-12 col-xs-12" href="/hait/profile/<%= current_user.id %>"><img src="/images/profile_edit.png" alt="프로필"></a>
+        <a class="col-lg-2 col-md-3 col-sm-12 col-xs-12" href="/hait/event_notice"><img src="/images/mypage_event.png" alt="이벤트"></a>
+        <div class="col-lg-2 col-md-0 col-sm-0 col-xs-0"></div>
+      </div>
+    </div>
+  </section>
+</body>  

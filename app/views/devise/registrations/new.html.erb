@@ -1,28 +1,48 @@
+<!--회원가입-->
 <div class="container"> 
+<div class = "logo"></div>
   <div class="login-box">
-    <div class="brand">
-      <a href="/about"><img style="height: 40px;" src="/images/logo.png" alt="logo"></a>
-    </div>
+    <!--<div class="brand">-->
+    <!--  <a href="/about"><img style="height: 40px;" src="/images/logo.png" alt="logo"></a>-->
+    <!--</div>-->
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
-      <div class="field">
+      <div class="input">
         <%= f.label :email %><br>
-        <%= f.email_field :email, autofocus: true %>
+         <%= f.email_field :email, :placeholder => '이메일을 입력하세요', :id => 'username', autofocus: true %>
       </div>
-      <div class="field">
+      <div class="input">
         <%= f.label :password %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %>
-        <%= f.password_field :password, autocomplete: "off" %>
+        <!--<%= f.password_field :password, autocomplete: "off" %>-->
+        <%= f.password_field :password, :class => 'input', :placeholder => '비밀번호 6자리 이상', :id => 'password', autocomplete: "off" %>
       </div>
-      <div class="field">
+      <div class="input">
         <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        <!--<%= f.password_field :password_confirmation, autocomplete: "off" %>-->
+        <%= f.password_field :password, :class => 'input', :placeholder => '동일한 비밀번호를 입력하세요', :id => 'password', autocomplete: "off" %>
+      </div><br>
+      
+      <div class="input">
+        <%= f.label "이름" %><br>
+        <%= f.text_field :name, :placeholder => '이름을 입력하세요',:id => 'username', autofocus: false %>
+      </div>
+      <div class="input">
+        <%= f.label "핸드폰 번호" %><br>
+        <%= f.number_field :phone, autofocus: false, :placeholder => "'-'는 제외, 번호만 입력하세요", :id => 'phone' %>
+      </div><br>
+      <div class="checkbtn", width: 0%>
+        <%= f.label "사용자 유형" %><br>
+        <h6>*사용자 유형은 신중히 선택해주세요.<br> 가입 후 수정이 불가능합니다.*</h6>
+        하숙생  <%= f.radio_button(:user_type, 0)%> <br>
+        하숙주인 <%= f.radio_button(:user_type, 1) %>
       </div><br>
     
-      <div class="actions">
-        <%= f.submit "Sign up", :class => "btn btn-secondary" %>
+      <div class="buttons">
+        <!--<%= f.submit "Sign up", :class => "btn btn-secondary" %>-->
+        <%= f.submit "Sign up",:id => "button", :style => "padding-left: 20px;" %>
       </div>
     <% end %>
     

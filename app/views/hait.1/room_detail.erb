@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<head>
+    <html lang="ko">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <section class="section__detail container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10 mb-3">
+                <img src="<%= @room_info.img_url.url %>">
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10 mb-3">
+                <h6><strong><i class="fa fa-home" aria-hidden="true"></i> 방 정보</strong></h6>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10 mb-3">
+                <table class="detail_table">
+
+                    <tr class="detail_tr">
+                        <td class="detail_td">층수</td>
+                        <td class="detail_td_right"><%=@room_info.floor%>층</td>
+                        <td class="detail_td pl-3">식사여부</td> 
+                        <td class="detail_td_right"><%=@room_info.breakfast%> <%=@room_info.lunch%> <%=@room_info.dinner%> 제공</td>
+                    </tr>
+                    <tr class="detail_tr">
+                        <td class="detail_td ">방역여부</td>
+                        <%if @room_info.cesco == 1%>
+                        <td class="detail_td_right">있음</td>
+                        <%else%>
+                        <td class="detail_td_right">없음</td>  
+                        <%end%>
+                        <td class="detail_td pl-3">냉방여부</td>
+                        <%if @room_info.air_con != nil || @room_info.fan != nil%>
+                          <td class="detail_td_right"><%=@room_info.air_con%> <%=@room_info.fan%> 제공</td>
+                        <%else%>
+                          <td class="detail_td_right">X</td>
+                        <%end%>
+                        
+                   </tr>
+                   <tr class="detail_tr">
+                        <td class="detail_td ">화장실 당 사용 인원 수</td>
+                        <td class="detail_td_right"><%=@room_info.toilet%></td>
+                        <td class="detail_td pl-3">세탁기 당 사용 인원 수</td>
+                        <td class="detail_td_right"><%=@room_info.washing%></td>
+                    </tr>
+                </div>    
+                    <tr class="detail_tr">
+                    <td class="detail_td">여선 전용</td>
+                    <% if @room_info.woman_only == 1%>
+                    <td class="detail_td_right">O</td>
+                    <%else%>
+                    <td class="detail_td_right">X</td>
+                    <%end%>
+                    <td class="detail_td"></td>
+                    <td class="detail_td_right"></td>
+                </tr>
+            </table> 
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10  mb-3">
+                <h6><strong><i class="fa fa-map-marker" aria-hidden="true"></i> 위치</strong></h6> 
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10  mb-3">
+                <a href="/hait/ticket_buy" class="btn bg-primary  btn-block ticket_buy_button">열람권 사용하기</a>
+            </div>
+        </div>
+    </section>
+</body>    
+

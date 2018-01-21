@@ -11,39 +11,29 @@
         <h2 class="section__room_list__title mb-3">
           <span class="section__category mb-2" lang="en">ha-it</span>
         </h2>
-        <!--<p class="section__text">-->
-        <!--  현재 멋쟁이사자처럼에서 진행되고 있는<br>-->
-        <!--  소모임들을 소개합니다!-->
-        <!--</p>-->
+
       </header>
-      <div class="cards row">
+      <div class="cards row ">
        <% @room.each do |r| %>
-        <% @house = House.find_by(r.house_id)%>
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
- 
-        <% @random_room.each do |n| %>
-            <div class="card mb-3 mb-md-0">
-                <a href="#" class="card-img__container d-flex justify-content-center align-items-center">
+            <div class="card my-3">
+                <a href="/hait/room_detail/<%=r.id%>" class="card-img__container d-flex justify-content-center align-items-center">
                   
-                  <img src="/images/houses/<%= n %>.jpg" alt="room_img" style="width:240px; height:172px;">
+                  <img src="<%=r.img_url.url%>" alt="room_img" class="my-4 px-2" style="width:240px; height:172px;">
                   
                     <!--srcset="assets/item-1@1x.jpg 1x, assets/item-1@2x.jpg 2x" -->
                 </a>
                 <!--interation-->
                 <div class="card-block d-flex justify-content-between">
-                  <h4 class="card-title mb-2 pl-2"><%= @house.house_name %></h4><p class=pr-2><i class="fa fa-heart-o" aria-hidden="true"></i></p>
+                  <h4 class="card-title mb-2 pl-4"><%= r.house.house_name %></h4>
+                  <!--<p class=pr-2><input type="submit" class="fa fa-heart-o" aria-hidden="true"></p>-->
                 </div>
                 <p class="card-text pl-4">
-                    월세 : <%=r.price%> 만원</br>
-                    식사 : <%=r.breakfast%>,<%=r.lunch%>,<%=r.dinner%></br>
-                    화장실 : <%=r.toilet%></br>
+                    월세 : <%=r.price%>원</br>
+                    식사 : <%=r.breakfast%> <%=r.lunch%> <%=r.dinner%></br>
+                    화장실 : <%=r.toilet%>명</br>
                  </p>
-                 <form action="/hait/room_detail/<%=r.id%>">
-                   <input type='hidden' name='room_number' value="<%= n %>" >
-                   <button type='submit'class="btn btn-primary bg-primary text-align-right d-block mx-5 mb-2">MORE</button>
-                 </form>
-                <!--//interation-->
-              <% end %>
+               <a href="/hait/room_detail/<%=r.id%>"  class="btn btn-primary bg-primary text-align-center d-block mx-4 mb-2">MORE</a>
           </div>
         </div>
         <%end%>
